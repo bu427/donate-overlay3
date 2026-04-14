@@ -19,19 +19,30 @@
         .donor-name { color: #25f4ee; }
         .donation-amount { font-size: 36px; color: #fe2c55; font-weight: bold; margin-bottom: 15px; }
         .donor-message { font-size: 18px; color: #ddd; background: rgba(255, 255, 255, 0.1); padding: 10px; border-radius: 10px; margin-bottom: 20px; font-style: italic; }
-        .slip-image { max-width: 100%; max-height: 300px; border-radius: 10px; border: 2px solid #555; object-fit: contain; }
     </style>
 </head>
 <body>
 
     <div id="donation-alert">
+		<button id="audio-btn" onclick="enableAudio()" style="position:fixed; bottom:10px; right:10px; z-index:999;">
+    กดเปิดเสียงแจ้งเตือน
+</button>
+
+<script>
+    function enableAudio() {
+        const sound = document.getElementById('alert-sound');
+        sound.play(); // สั่งให้เล่น 1 ครั้งสั้นๆ เพื่อเปิดสิทธิ์
+        sound.pause(); // หยุดไว้ก่อน
+        document.getElementById('audio-btn').style.display = 'none'; // ซ่อนปุ่มเมื่อกดแล้ว
+        alert("เปิดใช้งานเสียงเรียบร้อยแล้ว!");
+    }
+</script>
         <div class="donor-info"><span class="donor-name" id="name">ผู้โดเนท</span> ได้โดเนท</div>
         <div class="donation-amount" id="amount">฿0</div>
         <div class="donor-message" id="message">"ข้อความจากผู้โดเนท..."</div>
-        <img id="slip" class="slip-image" src="" alt="สลิปโดเนท">
     </div>
 
-    <audio id="alert-sound" src="https://path-to-your-sound.mp3"></audio>
+    <audio id="alert-sound" src="2026-04-14-16-42-52.mp3"></audio>
 
     <script>
         // วาง URL ของ Google Apps Script Web App ที่ก๊อปปี้มาตรงนี้
